@@ -5,12 +5,15 @@ for (let i = 0 ; i < cells.length ; i++) {
     cells[i].addEventListener("click", tdClick);
 }
 
+let currentPayer = 'X';
+
 function tdClick() {
-    if (this.innerHTML === 'X') {
-        this.innerHTML = '';
+    this.innerHTML = currentPayer;
+    if (currentPayer === 'X'){
+        currentPayer = 'O';
     } else {
-        this.innerHTML = 'X';
+        currentPayer = 'X';
     }
-    return false;
+    this.removeEventListener('click',tdClick)
 }
 
