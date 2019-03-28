@@ -1,0 +1,17 @@
+body{
+}
+
+.cell{
+    margin: 50px auto;
+    width: 300px;
+}
+
+
+
+td {
+    margin: auto;
+    border: 2px solid yellow;
+    float: left;
+    height: 60px;
+    width: 60px;
+}
