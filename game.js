@@ -1,18 +1,68 @@
+document.querySelector('#name_player111').innerHTML = localStorage.getItem('nameOnePlayer');
+document.querySelector('#name_player222').innerHTML = localStorage.getItem('nameTwoPlayer');
+let winCounterOnePlauer = 0;
+let winCounterTwyPlayer = 0;
 
-let cells = document.querySelectorAll('#field td');
+document.addEventListener('DOMContentLoaded', function() {
 
-for (let i = 0 ; i < cells.length ; i++) {
-    cells[i].addEventListener("click", tdClick);
+    let modalButtons = document.querySelectorAll('.js-open-modal'),
+        overlay      = document.querySelector('.js-overlay-modal'),
+        closeButtons = document.querySelectorAll('.js-modal-close');
+
+    modalButtons.forEach(function(item){
+
+        item.addEventListener('click', function(e) {
+
+            let modalId = this.getAttribute('data-modal'),
+                modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+
+            modalElem.classList.add('active');
+            overlay.classList.add('active');
+        });
+    });
+
+    closeButtons.forEach(function(item){
+        item.addEventListener('click', function(e) {
+            let parentModal = this.closest('.modal');
+            parentModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+});
+
+function makeCounter() {
+    let counter = document.getElementById('count').innerHTML;
+    counter++;
+    document.getElementById('count').innerHTML = counter;
+    localStorage.setItem('counter', counter);
 }
 
+let cells = document.querySelectorAll('#field td');
 let currentPlayer = 'X';
+startGame(cells);
 
+function startGame() {
+    for (let i = 0 ; i < cells.length ; i++) {
+        cells[i].innerHTML = '';
+        cells[i].addEventListener('click', tdClick);
+    }
+}
 function tdClick() {
     this.innerHTML = currentPlayer;
     if (currentPlayer === 'X'){
         currentPlayer = 'O';
     } else {
         currentPlayer = 'X';
+    }
+    let element1 = document.getElementById('name_player111');
+    let element2 = document.getElementById('name_player222');
+    if (currentPlayer === 'X') {
+        element1.classList.add('css-class-player');
+        element2.classList.remove('css-class-player');
+    }
+    if (currentPlayer === 'O') {
+        element2.classList.add('css-class-player');
+        element1.classList.remove('css-class-player');
     }
     this.removeEventListener('click',tdClick);
     let winner = checkWinner(cells) === undefined ? false : checkWinner();
@@ -36,9 +86,11 @@ function checkWinner(cells) {
     for (let i = 0; i < combinations.length; i++) {
         let combo = combinations[i];
         if(cells[combo[0]].innerHTML === cells[combo[1]].innerHTML && cells[combo[1]].innerHTML === cells[combo[2]].innerHTML && cells[combo[0]].innerHTML !== '' && cells[combo[0]].innerHTML === 'X'){
+            localStorage.setItem('winCounter1', ++winCounterOnePlauer);
             alert("победили крестики");
             return true;
         }else if(cells[combo[0]].innerHTML === cells[combo[1]].innerHTML && cells[combo[1]].innerHTML === cells[combo[2]].innerHTML && cells[combo[0]].innerHTML !== '' && cells[combo[0]].innerHTML === 'O') {
+            localStorage.setItem('winCounter2', ++winCounterTwyPlayer);
             alert("победили нолики");
             return true;
         }
@@ -52,4 +104,11 @@ function fieldsFullness() {
             full = false;
         }
     } return full;
+}
+
+let restart = document.querySelector('#restart');
+restart.addEventListener('click', restartGame);
+
+function restartGame() {
+    startGame();
 }

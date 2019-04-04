@@ -2,18 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Конец игры</title>
 </head>
 <body>
-
 <div class="game">
-    <div class="player1" id="1">Игрок первый</div>
-    <div class="player2" id="2">Игрок второй</div>
-    <div class="champion player1 player2" id="champion player1 player2"></div>
+    <span>Игрок первый выйграл:</span>
+    <div class="player1" id="name_player1"></div>
+    <span>Игрок второй выйграл:</span>
+    <div class="player2" id="name_player2"></div>
 
 </div>
-<p>Количество раундов <span>123</span></p>
-<script src="game.js"></script>
+<div>
+    <span> Количество раундов: </span><span id="count">  1</span>
+</div>
+<script>
+    document.querySelector('#name_player1').innerHTML = localStorage.getItem('winCounter1');
+    document.querySelector('#name_player2').innerHTML = localStorage.getItem('winCounter2');
+    document.querySelector('#count').innerHTML = localStorage.getItem('counter');
+</script>
 </body>
 </html>

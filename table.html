@@ -2,27 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="style.css">
     <title>крестики-нолики</title>
 </head>
 <body>
+<a href="#" class="js-open-modal" data-modal="1">Правила игры</a>
+
+<div class="modal" data-modal="1">
+    <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
+    </svg>
+    <p class="modal__title"><h1>Крестики-нолики</h1>
+    Крестики-нолики — логическая игра между двумя противниками на квадратном поле 3 на 3 клетки или большего размера (вплоть до «бесконечного поля»).
+    Один из игроков играет «крестиками», второй — «ноликами». В традиционной китайской игре используются черные и белые камни.
+    Игроки по очереди ставят на свободные клетки поля 3х3 знаки (один всегда крестики, другой всегда нолики).
+    Первый, выстроивший в ряд 3 своих фигур по вертикали, горизонтали или диагонали, выигрывает. Первый ход делает игрок, ставящий крестики.
+    Обычно по завершении партии выигравшая сторона зачёркивает чертой свои три знака (нолика или крестика), составляющих сплошной ряд.</p>
+</div>
+
+<div class="overlay js-overlay-modal"></div>
 <center>
     <div class="game">
         <div>
-            <div class="player1" id="player1">Игрок первый</div>
+            <div class="player1" id="name_player111"></div>
             <img src="http://www.zwalls.ru/mini/201310/29883.jpg" alt="альтернативный текст">
         </div>
-
+        <br>
+        <br>
         <div>
-            <div class="player2" id="player2">Игрок второй</div>
+            <div class="player2" id="name_player222"></div>
             <img src="https://f.vividscreen.info/soft/c37db0d3088f8e865110dc083d3a615b/Cute-Puppy-320x240.jpg" alt="альтернативный текст">
         </div>
-        <div class="circle player1 player2"></div>
-
     </div>
 
-<table class="cell" id="field" >
+<table class="cell" id="field">
     <tr>
         <td></td>
         <td></td>
@@ -39,6 +52,16 @@
         <td></td>
     </tr>
 </table>
+
+    <div>
+        <button onclick="makeCounter()" type="button" id="restart">Начать новую игру</button>
+        <span id="count"> 1</span><span> Раунд</span>
+    </div>
+    <br>
+    <br>
+    <form>
+        <button formaction="end.html" >Выход</button>
+    </form>
 </center>
 <script src="game.js"></script>
 </body>

@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>главное меню</title>
 </head>
 <body>
 <center>
-    <form action="table.html">
+    <form name="form" action="table.html">
         <label for="name_player1">имя первого игрока</label>
-        <input type="name1" id="name_player1">
+        <input id="name_player1" name="player1">
         <label for="name_player2">имя второго игрока</label>
-        <input type="name2" id="name_player2">
+        <input id="name_player2" name="player2">
 
-    <div class="bottom">
-        <input type="submit" value="войти">
-    </div>
+        <div class="bottom">
+            <input type="submit" value="войти">
+        </div>
     </form>
 </center>
-<script src="game.js"></script>
+<script>
+    document.forms.form.onsubmit = function() {
+        let nameOnePlayer = this.player1.value;
+        localStorage.setItem('nameOnePlayer', nameOnePlayer);
+        let nameTwoPlayer = this.player2.value;
+        localStorage.setItem('nameTwoPlayer', nameTwoPlayer);
+    };
+</script>
 </body>
 </html>
