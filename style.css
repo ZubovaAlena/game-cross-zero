@@ -8,10 +8,21 @@ body{
 
 td {
     margin: auto;
-    border: 2px solid yellow;
+    border: 3px solid yellow;
     float: left;
     height: 60px;
     width: 60px;
+}
+.game {
+    display: flex;
+    min-height: 150px;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+img {
+    width: 300px;
+    height: 200px;
 }
 
 .overlay {
@@ -76,9 +87,10 @@ a {
 }
 
 .css-class-player {
+    height: 20px;
     width: 150px;
-    margin: 10px;
-    padding: 10px;
+    margin: 3px;
+    padding: 3px;
     color: red;
     background-color: black;
     border: 2px solid red;

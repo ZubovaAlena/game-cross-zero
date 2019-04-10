@@ -1,6 +1,6 @@
 document.querySelector('#name_player111').innerHTML = localStorage.getItem('nameOnePlayer');
 document.querySelector('#name_player222').innerHTML = localStorage.getItem('nameTwoPlayer');
-let winCounterOnePlauer = 0;
+let winCounterOnePlayer = 0;
 let winCounterTwyPlayer = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -86,11 +86,13 @@ function checkWinner(cells) {
     for (let i = 0; i < combinations.length; i++) {
         let combo = combinations[i];
         if(cells[combo[0]].innerHTML === cells[combo[1]].innerHTML && cells[combo[1]].innerHTML === cells[combo[2]].innerHTML && cells[combo[0]].innerHTML !== '' && cells[combo[0]].innerHTML === 'X'){
-            localStorage.setItem('winCounter1', ++winCounterOnePlauer);
+            localStorage.setItem('winCounter1', ++winCounterOnePlayer);
+            document.getElementById('name_player1').innerHTML = winCounterOnePlayer;
             alert("победили крестики");
             return true;
         }else if(cells[combo[0]].innerHTML === cells[combo[1]].innerHTML && cells[combo[1]].innerHTML === cells[combo[2]].innerHTML && cells[combo[0]].innerHTML !== '' && cells[combo[0]].innerHTML === 'O') {
             localStorage.setItem('winCounter2', ++winCounterTwyPlayer);
+            document.getElementById('name_player2').innerHTML = winCounterTwyPlayer;
             alert("победили нолики");
             return true;
         }
@@ -112,3 +114,28 @@ restart.addEventListener('click', restartGame);
 function restartGame() {
     startGame();
 }
+
+
+let bottomOne = document.getElementById('bottom_onePlayer');
+let bottomTwo = document.getElementById('bottom_twoPlayer');
+bottomOne.addEventListener('click', () => {
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open('GET', 'https://randomfox.ca/floof/');
+    xhr.onload = function () {
+        let jsonResponse = xhr.response;
+        document.querySelector("#myImage_onePlayer").src = jsonResponse['image'];
+    };
+    xhr.send();
+});
+
+bottomTwo.addEventListener('click', () => {
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open('GET', 'https://randomfox.ca/floof/');
+    xhr.onload = function () {
+        let jsonResponse = xhr.response;
+        document.querySelector("#myImage_twoPlayer").src = jsonResponse['image'];
+    };
+    xhr.send();
+});

@@ -20,22 +20,41 @@
     Обычно по завершении партии выигравшая сторона зачёркивает чертой свои три знака (нолика или крестика), составляющих сплошной ряд.</p>
 </div>
 
+
 <div class="overlay js-overlay-modal"></div>
-<center>
+
     <div class="game">
         <div>
             <div class="player1" id="name_player111"></div>
-            <img src="http://www.zwalls.ru/mini/201310/29883.jpg" alt="альтернативный текст">
+            <div id="img_onePlayer">
+                <img id="myImage_onePlayer" src="http://randomfox.ca/images/18.jpg">
+            </div>
+
+            <div class="bottom">
+                <input type="submit" id="bottom_onePlayer" value="сменить лого">
+            </div>
         </div>
-        <br>
-        <br>
+
         <div>
             <div class="player2" id="name_player222"></div>
-            <img src="https://f.vividscreen.info/soft/c37db0d3088f8e865110dc083d3a615b/Cute-Puppy-320x240.jpg" alt="альтернативный текст">
+            <div id="img_twoPlayer">
+                <img id="myImage_twoPlayer" src="http://randomfox.ca/images/78.jpg">
+            </div>
+            <div class="bottom">
+                <input type="submit" id="bottom_twoPlayer" value="сменить лого">
+            </div>
         </div>
     </div>
 
-<table class="cell" id="field">
+<center>
+    <div class="games">
+        <span>Игрок первый выйграл:</span>
+        <div class="player1" id="name_player1"></div>
+        <span>Игрок второй выйграл:</span>
+        <div class="player2" id="name_player2"></div>
+    </div>
+
+    <table class="cell" id="field">
     <tr>
         <td></td>
         <td></td>
