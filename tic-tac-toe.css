@@ -1,0 +1,29 @@
+body {
+    background-color: beige;
+}
+td {
+    margin: auto;
+    border: 3px solid blue;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+div.game {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+div.left_block {
+    margin-top: 50px;
+}
+
+div.right_block {
+    margin-top: 50px;
+}
+
+div.center_block {
+    margin-top: 50px;
+}
+
+
